@@ -11,7 +11,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "utn_tp1_libs/utn_Tp1Manager.h"
+
 int main(void) {
-	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
+	utnStartTP1Mng();
 	return EXIT_SUCCESS;
 }

@@ -9,7 +9,7 @@
 #include <stdio_ext.h>
 #include "utn_math.h"
 
-#define DIVISION_ZERO_MSSG "Division by zero not Allowed"
+#define DIVISION_ZERO_MSSG "Division by zero not Allowed\n"
 
 
 int utn_Addition(int iNum1, int iNum2){
@@ -24,7 +24,9 @@ int utn_Multiplication(int iNum1, int iNum2){
 int utn_Division(int iNum1, int iNum2){
 	float reslt = 0;
 	if(iNum2==0){
+		printf("======ATTENTION=======\n");
 		printf(DIVISION_ZERO_MSSG);
+		printf("======================\n");
 	}else{
 		reslt = iNum1/iNum2;
 	}

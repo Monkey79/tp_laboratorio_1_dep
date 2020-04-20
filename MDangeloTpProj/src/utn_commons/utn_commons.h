@@ -12,5 +12,6 @@
 int utnGetPositiveInteger(int iFrom);
 //get positive float value from a given value (with 2 decimal)
 float utnGetPositiveFloat2D(float fFrom);
+void utnInitializeIntArray(int *pIntArr, int iTop, int iEmptyValue);
 
 #endif /* UTN_COMMONS_UTN_COMMONS_H_ */

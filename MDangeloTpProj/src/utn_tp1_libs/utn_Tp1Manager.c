@@ -23,13 +23,14 @@ void _calculateAllOPerations(int iNum1, int iNum2, int *pResults);
 void _showAllResults(int iNum1, int iNum2, int *pResults);
 
 #define TOP 7
+
 void utnStartTP1Mng(void){
 	int iNum1 = 0;
 	int iNum2 = 0;
 	int iOptSlctd = 0;
+	int results[TOP]; //Guardo todos los resultados de todas las operaciones que pide el TP
 
-	int results[TOP];
-
+	utnInitializeIntArray(results, TOP, -1);
 	do{
 		_buildMenu(&iOptSlctd, &iNum1, &iNum2);
 		_checkOptSelected(iOptSlctd, &iNum1, &iNum2, results);
@@ -53,15 +54,15 @@ void _buildMenu(int *pOptSlct, int *pINum1, int *pINum2){
 void _checkOptSelected(int iOptSlct,int *pINum1, int *pINum2, int *pResults) {
 	switch (iOptSlct) {
 		case 1:
-			printf("--1-Ingresar 1do operandos--\n");
+			printf("--1-Ingresar Primer operando--\n");
 			*pINum1 = utnGetPositiveInteger(0);
 			break;
 		case 2:
-			printf("--2-Ingresar 2do operando--\n");
+			printf("--2-Ingresar Segundo operando--\n");
 			*pINum2 = utnGetPositiveInteger(0);
 			break;
 		case 3:
-			printf("--3-Calcular operaciones--\n");
+			printf("--3-Calcular Operaciones--\n");
 			_calculateAllOPerations(*pINum1, *pINum2, pResults);
 			break;
 		case 4:
@@ -81,20 +82,24 @@ void _showOptionInvalidMssg(void){
 }
 
 void _calculateAllOPerations(int iNum1, int iNum2, int *pResults){
-	*(pResults+0) = utn_Addition(iNum1, iNum2);
-	*(pResults+1) = utn_Subtraction(iNum1, iNum2);
-	*(pResults+2) = utn_Multiplication(iNum1, iNum2);
-	*(pResults+3) = utn_Division(iNum1, iNum2);
-	*(pResults+4) = utn_Factorial(iNum1);
-	*(pResults+5) = utn_Factorial(iNum2);
+	*(pResults+0) = utn_Addition(iNum1, iNum2);  //suma en posicion 0
+	*(pResults+1) = utn_Subtraction(iNum1, iNum2); //resta en posicion 1
+	*(pResults+2) = utn_Multiplication(iNum1, iNum2); //multiplicacion en posicion 2
+	*(pResults+3) = utn_Division(iNum1, iNum2); //division en posicion 3
+	*(pResults+4) = utn_Factorial(iNum1);  //factorial 1er num en posicion 4
+	*(pResults+5) = utn_Factorial(iNum2); //factorial 2do num en posicion 5
 }
 
 void _showAllResults(int iNum1, int iNum2, int *pResults){
-	printf("El resultado de %d+%d es: %d \n*",iNum1, iNum2, *(pResults+0));
-	printf("El resultado de %d-%d es: %d \n*",iNum1, iNum2, *(pResults+1));
-	printf("El resultado de %d*%d es: %d \n*",iNum1, iNum2, *(pResults+2));
-	printf("El resultado de %d/%d es: %d \n*",iNum1, iNum2, *(pResults+3));
-	printf("El factorial de %d es: %d \n*",iNum1, *(pResults+4));
-	printf("El factorial de %d es: %d \n*",iNum2, *(pResults+5));
+	printf("(Suma->) El resultado de %d+%d es: %d \n*",iNum1, iNum2, *(pResults+0));
+	printf("(Resta->) El resultado de %d-%d es: %d \n*",iNum1, iNum2, *(pResults+1));
+	printf("(Multiplicacion->) El resultado de %d*%d es: %d \n*",iNum1, iNum2, *(pResults+2));
+	if(iNum2!=0){
+		printf("(Division->) El resultado de %d/%d es: %d \n*",iNum1, iNum2, *(pResults+3));
+	}else{
+		printf("==Division por Cero - Indeterminacion==\n*");
+	}
+	printf("(Factorial 1er num->) El factorial de %d es: %d \n*",iNum1, *(pResults+4));
+	printf("(Factorial 2do num->) El factorial de %d es: %d \n*",iNum2, *(pResults+5));
 }
 

@@ -29,3 +29,8 @@ float utnGetPositiveFloat2D(float fFrom) {
 	}while(fNum<fFrom);
 	return fNum;
 }
+void utnInitializeIntArray(int *pIntArr, int iTop, int iEmptyValue){
+	for(int i=0; i< iTop-1; i++){
+		*(pIntArr+i)=iEmptyValue;
+	}
+}
